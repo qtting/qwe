@@ -1,40 +1,44 @@
 <?php
-$id = $code = "";
-$iderr = $codeerr = "";
+$id = $pwd = "";
+$iderr = $pwderr = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        if (empty($_POST["id"])) {
+        if (empty($_REQUEST["id"])) {
             $iderr = "Please input your id";
             echo $iderr;
           } else {
-            $id = test_input($_POST["id"]);
+            $id = test_input($_REQUEST["id"]);
           }
-          if (empty($_POST["code"])) {
-            $codeerr = "Please input your code";
-            echo $codeerr;
+          if (empty($_REQUEST["pwd"])) {
+            $pwderr = "Please input your password";
+            echo $pwderr;
           } 
           else {
-            $code = test_input($_POST["code"]);
+            $pwd = test_input($_REQUEST["pwd"]);
           }
     }
 
     function test_input($data)
     {
     $data = trim($data);
-    $data = stripslashes($data);
+    $data = stripslashes($data); 
     return $data;
     }
-$pdo = new PDO("mysql:host=localhost;dbname=users",'root','');
+$pdo = new PDO("mysql:host=localhost;dbname=users",'root','');//修改数据库
     $pdo->exec('set names utf8');
-    $sql = "select  *  from  uses_tbl   where  users_id = $id ";
-    $result = $pdo->query($sql);
-    if(!$result)
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $stmt = $pdo->prepare("select * from users_tbl where users_id = :id "); 
+    if($stmt)
     {
-      $sql = "INSERT uses_tbl (users_id,users_code) VALUES ('$id','$code')";
-      echo "<script>alert('注册成功')location.href='login.html'</script>;
+      $q = $pdo ->prepare('INSERT INTO users_tbl(users_id,users_code) VALUES (:id,:pwd);')
+      $q -> bindValue(':users_id', $id); 
+      $pwd = password_hash($pwd,PASSWORD_DEFAULT);
+      $q -> bindValue(':users_code', $pwd);
+      $q -> execute();   
+        echo "<script>alert('注册成功')</script>";
     }
     else {
-      $result = '请换一个用户名'；
+      $result = '请换一个用户名';
       echo $result;
     }
 $pdo = null;
