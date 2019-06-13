@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>TODOList</title>
 <style>
-div {
+.create{
     display: block;
     background-color: #4CAF50;
     color:white;
@@ -14,14 +14,79 @@ div {
     font-size: 1em;
     margin:0;
 }
+.form{
+    margin:70px;
+    margin-left:200px;
+    font-family:  "Times New Roman", "Microsoft YaHei";
+    
+}
+.in{
+        border: 1.8px solid #4CAF50;
+        width: 900px;            
+        height: 30px;            
+        border-radius: 10px;            
+        position: absolute;                     
+        text-align: left;                        
+        cursor: auto;              
+}
+.comment{
+        border: 1.8px solid #4CAF50;
+        width: 900px; 
+        height:400px;                     
+        border-radius: 10px;            
+        position: absolute;                     
+        text-align: left;                        
+        cursor: auto
+        
+}
+
+.button1{
+    border: 2px solid #4CAF50;
+    border-radius: 20px;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-left:1000px;
+    margin-top: 290px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color:white;
+    color: #4CAF50;
+  }
+  .button1:hover{ 
+    border: 2px solid #4CAF50;
+    padding: 10px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-left:1000px;
+    margin-top: 290px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color:#4CAF50;
+    color: white;
+  }
+
+}
     </style>
     </head>
     <body>
-        <div>
+        <div class="create">
             <p >任务创建</p>
         </div>
-        <form>
-            
+
+        <form class="form"method="post" action=establish.php>
+        任务名称：<input type="text" name="todoname"class="in"></br>
+        <br/><br/>
+        截止时间：<input type="datetime-local"name ="date"class="in"></br>
+        <br/><br/>
+        任务描述：<input type="text" name="comment"class="comment"><br/>
+        <br/><br/>
+        <input type="submit" name="submit" value="添加" class="button1"> 
         </form>
+
     </body>
     </html>
