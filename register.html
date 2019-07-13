@@ -4,60 +4,152 @@
 <meta charset="utf-8">
 <title>ToDoList</title>
 <style>
-    a{text-decoration:none;
-    }
-    body{font-size:100%;}
-    .c01{
-      font-family:"Times New Roman",Times,serif;
-      text-align:center;
-      font-size:4em;
-    }
-    .c02{
-      text-align:center;
-    }
-    
-    .button1{
-      border: 2px solid black;
-      padding: 16px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 20px;
-      margin: 4px 2px;
-      transition-duration: 0.4s;
-      cursor: pointer;
-      background-color:white;
-      color: black;
-    }
-    .button1:hover{ 
-      border: 2px solid black;
-      padding: 16px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 20px;
-      margin: 4px 2px;
-      transition-duration: 0.4s;
-      cursor: pointer;
-      background-color:black;
-      color: white;
-    }
-    .error{
-        color:red;
-    }
-    </style>
+ .button1{
+    border: 2px solid #888888;
+    border-radius: 12px;
+    padding: 10px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 0;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color:white;
+    color: #888888;
+  }
+  .button1:hover{ 
+    border: 2px solid #888888;
+    padding: 10px 35px;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 0;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color:#888888;
+    color: white;
+  }
+  a{text-decoration:none;
+}
+body{font-size:100%;}
+.c01{
+  font-family:"Times New Roman",Times,serif;
+  text-align:center;
+  font-size:4em;
+}
+div.c03{
+    display: block;
+    background-color: #4CAF50;
+    color:white;
+    text-align: left;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 1em;
+    margin:0;
+}
+div.c04{
+    margin:60px;
+    padding: 40px;
+    padding-left: 500px;
+    border:2px solid #4CAF50;
+}
+div.c05{
+    margin:10px;
+    padding: 25px;
+    padding-left: 6px;
+}
+div.c06{
+    margin:5px;
+    padding: 15px;
+    padding-left: 35px;
+}
+.c07{
+  text-align: center;
+  padding-left: 100px;
+}
+input{
+      border: 1.5px solid #4CAF50; 
+      padding: 5px 0px;
+      border-radius: 4px;
+      padding-left:10px; 
+}
+  </style>
 </head>
-<body><br/><br/><br/><br/>
-    <h1 class='c01'>Welcome to Todolist</h1>
-    <br/>
-    <form method="post" action="register.php" class='c02'> 
-       <p class='c02'>用户名: <input type="text" name="id">
-       <span class="error">* </span></p>
-       <br/>
-       <p class='c02'>密码: <input type="password" name="pwd">
-       <span class="error">* </span></p>
-       <br><br> 
-       <button type="submit" onclick="alert('Welcome!')"class="button1">注册并登录</button>
-       </form>
+<body> 
+    <div class="c03"> 
+      <h1>Welcome to TODOlist 注册页面</h1>
+    </div>
+    
+      <div class="c04">
+          <form method="post" action=register.php name='registerform' onsubmit="return validata()">
+                
+                <p>用户名:
+                  <input type='text' name='id'>
+                </p>
+
+                <div class="c05">
+                      <p> 密码: 
+                        <input type="password" name="pwd" >
+                    </p>                   
+                </div>
+
+                 <p> 确认密码: 
+                        <input type="password" name="pwd2" >
+                  </p>
+
+                  <div class="c06">
+                    <button type="submit" class="button1">注册并登录</button> <br/><br/>
+                    
+            </div>
+           <a href="login.html" target="_blank"class = "c07">登录</a>
+            <br/><br/>
+      </form>
+        
+    </div>
+    <script>
+        function validata(){
+          var x=document.forms["registerform"]["id"].value;
+          var y=document.forms["registerform"]["pwd"].value;
+          var z=document.forms["registerform"]["pwd2"].value;
+          if (x==null || x==""){
+          alert("请填写用户名");
+          return false;
+          }
+          else{
+              if(x.length>10){
+                  alert("用户名过长");
+                  return false;
+              }
+          }
+          if (y==null || y==""){
+          alert("请输入密码");
+          return false;
+          }
+          else{
+              if(y.length>20){
+                  alert("密码过长");
+                  return false;
+              }
+          }
+          if (z==null || z==""){
+          alert("请确认密码");
+          return false;
+          }
+          else{
+              if(z.length>20){
+                  alert("密码过长");
+                  return false;
+              }
+          }
+          if(y!=z)
+          {
+            alert("两次密码输入不符");
+                  return false;
+          }
+        }
+        </script> 
     </body>
     </html>

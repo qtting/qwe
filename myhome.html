@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TODOList</title>
+<style>
+/* 导航栏属性 */
+.navigation{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navigation2{
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    z-index:-1; 
+} 
+
+.size{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align:center;
+    width: 400px;
+    float: left;
+}
+.size:hover{
+    text-align:center;
+    width: 400px;
+    background-color: #111;
+    float: left;
+}
+.active{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align:center;
+    width: 400px;
+    background-color: #4CAF50;
+    float: left;
+} 
+.active:hover{
+    text-align:center;
+    width: 400px;
+    background-color: #4CAF50;
+    background-color: #111;
+    float: left;
+}
+.size2{
+    border:2px solid white;
+    border-radius: 12px;
+    text-decoration: none;
+    display: block;
+    color: black;
+    background-color: #f1f1f1;
+    margin-top:20px;
+    margin-left:20px;
+    padding: 14px 16px;
+    text-align:center;
+    width: 125px;
+    position: relative;
+}
+.size2:hover{
+    text-align:center;
+    background-color: #33CC00;
+    color:white;
+}
+.active2{
+    border:2px solid white;
+    border-radius: 12px;
+    text-decoration: none;
+    display: block;
+    color: white;
+    background-color: #4CAF50;
+    margin-top:0px;
+    margin-left:20px;
+    padding: 14px 16px;
+    text-align:center;
+    width: 125px;
+    position: relative;
+}
+.active2:hover{
+    text-align:center;
+    background-color: #33CC00;
+    color:white;
+}
+
+div.c01{
+    z-index:2;
+    margin-left:200px;
+    margin-top:20px;
+    display: inline-block;
+    font-family: "Times New Roman", "Microsoft YaHei";   
+    text-align: center;
+    text-decoration: none;
+    line-height:70px;
+    cursor: pointer; 
+    font-size:18px;
+    z-index:2;
+    width: 80px; 
+    height: 100px; 
+    padding:0px;
+}
+.card1{  
+    width:120px;
+    height:80px;
+    padding:10px;
+    text-decoration: none;
+    color:#333; 
+    box-shadow:  0 6px 20px 0 coral;   
+    background-color: coral;  
+    display: inline-block;
+    border-radius:12px;   
+}
+.card2{  
+    text-decoration: none;
+    color:grey;  
+    box-shadow:  0 6px 20px 0 #afeeee; 
+    width: 120px; 
+    height: 80px; 
+    padding:10px;
+    margin-left:200px;
+    margin-top:20px;
+    background-color: #afeeee;  
+    display: inline-block;
+    border-radius:12px;
+}
+.card3{
+    text-decoration: none;
+    color:grey;  
+    box-shadow:  0 6px 20px 0 #eee8aa; 
+    width: 120px; 
+    height: 80px; 
+    padding:10px;
+    margin-left:400px;
+    margin-top:20px;
+    background-color: #eee8aa;  
+    display: inline-block;
+    border-radius:12px;
+}
+.card4{
+    text-decoration: none;
+    color:#333;  
+    line-height:40px;
+    box-shadow:  0 6px 20px 0 #a9a9a9; 
+    position: absolute;
+    width: 120px; 
+    height: 80px; 
+    padding:10px;
+    margin-left:600px;
+    margin-top:20px;
+    background-color: #a9a9a9;  
+    display: inline-block;
+    border-radius:12px;
+    z-index:2;
+}
+div.card {
+  width: 155px;
+  margin-top:10px;
+  margin-left:20px;
+  box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  z-index: -1;
+  position: fixed;
+  display: inline-block;
+}
+
+div.header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    z-index: -1;
+}
+
+div.containers {
+    padding: 10px;
+}
+</style>
+</head>
+<body>
+
+<ul class="navigation">
+
+            <li><a href="myhome.html"class="active">我的主页</a></li>
+            <!-- <li><a href="friends.php"class="size">我的朋友</a></li> -->
+            <li><a href="login.html"class="size">退出登录</a></li>
+ 
+</ul>
+<br/>
+
+<div class="card">
+        <div class="header">
+          <h1 id = 'day'>
+              <script>
+                var d = new Date();
+                document.write(d.getDate());
+              </script>
+          </h1>
+        </div>
+      
+        <div class="containers">
+          <p>
+              <script>
+                    var d = new Date();
+                    document.write(d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate());
+                    
+              </script>
+          </p>
+        </div>
+      </div>
+      
+    <div class='c01'>
+    <a class='card1' href="1.html" onmouseover="this.style.background='OrangeRed'" onmouseout="this.style.background='coral'">重要&紧急</a>
+    <a class='card2' href="2.html" onmouseover="this.style.background='PowderBlue'" onmouseout="this.style.background='#afeeee'">重要&不紧急</a>
+    <a class='card3' href="3.html" onmouseover="this.style.background='Khaki'" onmouseout="this.style.background='#eee8aa'">紧急&不重要</a>
+    <a class='card4' href="4.html" onmouseover="this.style.background='gray'" onmouseout="this.style.background='#a9a9a9'">不重要&不紧急</a>
+</div>
+
+<ul class="navigation2" >
+    <li ><a class='active2'href='myhome.html'>我的事件</a></li>
+    <li><a class = 'size2' href="homes.html">我的时间轴</a></li>
+    <li><a class='size2' href="establish.html">创建任务</a></li>
+</ul>
+
+
+</body>
+</html>

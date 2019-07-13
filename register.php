@@ -2,24 +2,11 @@
 session_start();
 $_SESSION['admin'] = null;
 $_SESSION['id'] = null;
-$id = $pwd = "";
-$iderr = $pwderr = "";
-    if ($_SERVER["REQUEST_METHOD"] == "POST")
-    {
-        if (empty($_REQUEST["id"])) {
-            echo "<script>alert('请记得输入用户名呀');window.location.href='register.html'</script>";
-          } else {
-            $id = test_input($_REQUEST["id"]);
-          }
-          if (empty($_REQUEST["pwd"])) {
-            echo "<script>alert('呀，没有密码是无法登录的哦');window.location.href='register.html'</script>";
-          } 
-          else {
-            $pwd = test_input($_REQUEST["pwd"]);
-          }
-    }
-    
-    function test_input($data)
+$id = $pwd = "";   
+$id = testdata($_REQUEST["id"]);         
+$pwd = testdata($_REQUEST["pwd"]);  
+
+    function testdata($data)
     {
     $data = trim($data);
     $data = stripslashes($data); 
@@ -42,7 +29,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=users",'root','');
       $q -> execute();
       $_SESSION['admin'] = true;
       $_SESSION['id'] = $id;
-      echo "<script>alert('注册成功')</script>";
+      echo "<script>alert('注册成功，用户'+$id);window.location.href='myhome.html'</script>";
     }
     else {
         echo "<script>alert('请换一个用户名');window.location.href='register.html'</script>";

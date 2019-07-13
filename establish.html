@@ -70,7 +70,7 @@
     color: white;
   }
 
-}
+
     </style>
     </head>
     <body>
@@ -78,15 +78,57 @@
             <p >任务创建</p>
         </div>
 
-        <form class="form"method="post" action=establish.php>
+        <form class="form"method="post" action=establish.php name='taskform'  onsubmit="return validateForm()">
         任务名称：<input type="text" name="todoname"class="in"></br>
+        <br/><br/>
+        任务类型：
+        <input type="radio" name="con" value="1">重要&紧急
+        <input type="radio" name="con" value="2">重要&不紧急
+        <input type="radio" name="con" value="3">紧急&不重要
+        <input type="radio" name="con" value="4">不重要&不紧急</br>
         <br/><br/>
         截止时间：<input type="datetime-local"name ="date"class="in"></br>
         <br/><br/>
-        任务描述：<input type="text" name="comment"class="comment"><br/>
+        任务描述：<textarea method='post' type="text" name="comment"class="comment"></textarea><br/>
         <br/><br/>
         <input type="submit" name="submit" value="添加" class="button1"> 
         </form>
 
+        <script>
+        function validateForm(){
+        var x=document.forms["taskform"]["todoname"].value;
+        var y=document.forms["taskform"]["con"].value;
+        var z=document.forms["taskform"]["date"].value;
+        var w=document.forms["taskform"]["comment"].value;
+        if (x==null || x==""){
+        alert("请填写任务名称");
+        return false;
+        }
+        else{
+            if(x.length>10){
+                alert("任务名称过长");
+                return false;
+            }
+        }
+        if (y==null || y==""){
+        alert("请选择任务类型");
+        return false;
+        }
+        if (z==null || z==""){
+        alert("请填写任务截止时间");
+        return false;
+        }
+        if (w==null || w==""){
+        alert("请填写任务内容");
+        return false;
+        }
+        else{
+            if(w.length>150){
+                alert("任务内容过长");
+                return false;
+            }
+        }
+        }
+        </script>
     </body>
     </html>

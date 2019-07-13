@@ -2,23 +2,10 @@
 session_start();
 $_SESSION['id']=null;
 $_SESSION['admin'] = null;
-$id = $code = "";
-    if ($_SERVER["REQUEST_METHOD"] == "POST")
-    {
-        if (empty($_POST["id"])) {
-            echo "<script>alert('用户名不能为空');window.location.href='login.html'</script>";
-          }else{
-            $id = test_input($_POST["id"]);
-          }
-          if (empty($_POST["pwd"])) {
-            echo "<script>alert('请输入密码');window.location.href='login.html'</script>";
-          } else {
-            $pwd = test_input($_POST["pwd"]);
-          }
-    $pdo = new PDO("mysql:host=localhost;dbname=users",'root','');
-  
-    $pdo = null;
-    }
+$id = $code = "";    
+$id = test_input($_POST["id"]);         
+$pwd = test_input($_POST["pwd"]);
+
 
     function test_input($data)
     {
@@ -38,7 +25,7 @@ $id = $code = "";
     {
       $_SESSION['admin'] = true;
       $_SESSION['id'] = $id;
-      echo "<script>alert('登录成功');window.location.href='home.html'</script>";
+      echo "<script>alert('登录成功,'+$id);window.location.href='myhome.html'</script>";
     }
     else {
       echo "<script>alert('请输入正确的密码或用户名');window.location.href='login.html'</script>";
